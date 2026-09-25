@@ -1,9 +1,18 @@
-with raw_merchants as (
+with source as (
     select * from {{ ref('merchants') }}
+),
+
+renamed as (
+    select
+        cast(merchant_id as string) as merchant_id,
+        cast(merchant_name as string) as merchant_name,
+        cast(category as string) as category,
+        cast(fee_plan_id as string) as plan_id,
+        lower(cast(status as string)) as status,
+        cast(onboarded_date as timestamp) as created_at,
+        cast(country as string) as country,
+        cast(province as string) as province
+    from source
 )
-select
-    cast(merchant_id as varchar(50)) as merchant_id,
-    cast(merchant_name as varchar(100)) as merchant_name,
-    cast(fee_plan_id as varchar(50)) as fee_plan_id,
-    cast(status as varchar(20)) as merchant_status
-from raw_merchants
+
+select * from renamed

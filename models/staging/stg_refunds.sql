@@ -1,10 +1,16 @@
-with raw_refunds as (
+with source as (
     select * from {{ ref('refunds') }}
+),
+
+renamed as (
+    select
+        cast(refund_id as string) as refund_id,
+        cast(transaction_id as string) as transaction_id,
+        cast(merchant_id as string) as merchant_id,
+        cast(created_at as timestamp) as refunded_at,
+        cast(refund_amount_cad as numeric) as refund_amount_cad,
+        cast(same_day_refund as bool) as same_day_refund
+    from source
 )
-select
-    cast(refund_id as varchar(50)) as refund_id,
-    cast(transaction_id as varchar(50)) as transaction_id,
-    cast(refund_amount_cad as numeric(18,2)) as refund_amount_cad,
-    cast(refunded_at as datetime2) as refunded_at,
-    cast(is_same_day as bit) as is_same_day
-from raw_refunds
+
+select * from renamed
