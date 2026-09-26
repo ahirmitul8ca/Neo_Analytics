@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
+      - name: merchant_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_merchants')
+              field: merchant_id
+
+  - name: fct_payments
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
