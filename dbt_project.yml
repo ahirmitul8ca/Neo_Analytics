@@ -25,5 +25,6 @@ seeds:
         base_rate_pct: float64
         fixed_fee_cad: float64
 
-tests:
+data_tests:
   +store_failures: true
+  +schema: dbt_test_audit
