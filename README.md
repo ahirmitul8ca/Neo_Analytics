@@ -60,22 +60,24 @@ Neo_Analytics/
 
  📐 Data Architecture & Modeling (Medallion Pattern)
 
- 1. Seed / Raw Layer (`seeds/`)
+1. Seed / Raw Layer (`seeds/`)
 
 Raw CSV files (`fee_plans.csv`, `merchants.csv`, `refunds.csv`, `transactions.csv`) are ingested directly into the target database using `dbt seed`.
 
-### 2. Staging Layer (`models/staging/` — Materialized as Views)
+2. Staging Layer (`models/staging/` — Materialized as Views)
 
 The staging layer transforms raw source data into clean, standardized views:
 
-* **Type Casting & Precision:** Enforces exact data types across key identifiers (`transaction_id`, `merchant_id`) and converts monetary fields into explicit numeric types to prevent floating-point rounding issues.
-* **Timestamp Parsing:** Standardizes datetime strings into proper database `TIMESTAMP` objects.
-* **Field Standardization:** Harmonizes field naming conventions (`fixed_fee_cad` -> `flat_fee_cad`), normalizes casing (`LOWER(status)`), and handles missing values via `COALESCE`.
+Type Casting & Precision: Enforces exact data types across key identifiers (`transaction_id`, `merchant_id`) and converts monetary fields into explicit numeric types to prevent floating-point rounding issues.
 
-### 3. Marts Layer (`models/marts/` — Materialized as Tables)
+Timestamp Parsing:  Standardizes datetime strings into proper database `TIMESTAMP` objects.
 
-* **`fct_payments`**: Transaction-grain fact table built on completed transactions. Calculates payment processing fees, FX markup, net CAD volume, and associated refund metrics.
-* **`merchant_performance`**: Monthly aggregate reporting table summarizing volume, revenues, fee earnings, authorization rates, and refund counts per merchant.
+Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `flat_fee_cad`), normalizes casing (`LOWER(status)`), and handles missing values via `COALESCE`.
+
+3. Marts Layer (`models/marts/` — Materialized as Tables)
+
+`fct_payments`: Transaction-grain fact table built on completed transactions. Calculates payment processing fees, FX markup, net CAD volume, and associated refund metrics.
+`merchant_performance` : Monthly aggregate reporting table summarizing volume, revenues, fee earnings, authorization rates, and refund counts per merchant.
 
 ---
 
