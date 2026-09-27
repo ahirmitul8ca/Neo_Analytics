@@ -58,9 +58,9 @@ Neo_Analytics/
 └── requirements.txt              # Python dependencies (dbt-core, adapters)
 
 
-## 📐 Data Architecture & Modeling (Medallion Pattern)
+ 📐 Data Architecture & Modeling (Medallion Pattern)
 
-### 1. Seed / Raw Layer (`seeds/`)
+ 1. Seed / Raw Layer (`seeds/`)
 
 Raw CSV files (`fee_plans.csv`, `merchants.csv`, `refunds.csv`, `transactions.csv`) are ingested directly into the target database using `dbt seed`.
 
