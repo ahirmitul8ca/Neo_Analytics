@@ -6,8 +6,8 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for **NorthPa
 
 ## 🛠 Tech Stack
 
-* **Data Warehouse:** Google Cloud BigQuery / Azure Synapse Analytics
-* **Transformation & Modeling:** dbt Core (`dbt-bigquery` / `dbt-synapse`)
+* **Data Warehouse:** Google Cloud BigQuery
+* **Transformation & Modeling:** dbt Core (`dbt-bigquery`)
 * **SQL Dialect:** Standard SQL / T-SQL
 * **Data Ingestion:** dbt Seeds (Native CSV Loaders)
 * **Version Control:** Git & GitHub
