@@ -18,8 +18,8 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for **NorthPa
 
 ```text
 Neo_Analytics/
-├── analyses/                     # Ad-hoc analytical queries and exploratory SQL
-├── data/                         # Raw seed CSV backups
+├── analyses/                     
+├── data/                         
 ├── docs/                         # Project documentation and metric definitions
 │   └── metrics.sql               # Production SQL logic for core business metrics
 ├── logs/                         # Execution and dbt log outputs
@@ -28,10 +28,10 @@ Neo_Analytics/
 │   ├── grant_select.sql
 │   └── log_tests_results.sql
 ├── models/
-│   ├── marts/                    # Medallion Gold Layer: Star schema fact & dimension models
+│   ├── marts/                    
 │   │   ├── fct_payments.sql
 │   │   └── merchant_performance.sql
-│   ├── staging/                  # Medallion Silver Layer: Views, type casting, & cleaning
+│   ├── staging/                 
 │   │   ├── stg_fee_plans.sql
 │   │   ├── stg_merchants.sql
 │   │   ├── stg_refunds.sql
