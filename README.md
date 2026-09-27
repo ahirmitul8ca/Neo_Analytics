@@ -57,6 +57,7 @@ Neo_Analytics/
 ├── README.md                     # Repository documentation & project brief
 └── requirements.txt              # Python dependencies (dbt-core, adapters)
 
+---
 
 📐 Data Architecture & Modeling (Medallion Pattern)
 
@@ -79,6 +80,8 @@ Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `
 `fct_payments`: Transaction-grain fact table built on completed transactions. Calculates payment processing fees, FX markup, net CAD volume, and associated refund metrics.
 `merchant_performance` : Monthly aggregate reporting table summarizing volume, revenues, fee earnings, authorization rates, and refund counts per merchant.
 
+
+##
 
 
 📊 Core Business Metrics (`docs/metrics.sql`)
@@ -109,7 +112,7 @@ All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
    Business Definition: Platform fee capture efficiency relative to GMV
    Calculation Logic: `SUM(total_fees_cad) / GMV`
 
-
+---
 
 🧪 Data Quality & Custom Test Suite (`tests/`)
 
