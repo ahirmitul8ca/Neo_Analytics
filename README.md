@@ -58,7 +58,7 @@ Neo_Analytics/
 └── requirements.txt              # Python dependencies (dbt-core, adapters)
 
 
- 📐 Data Architecture & Modeling (Medallion Pattern)
+📐 Data Architecture & Modeling (Medallion Pattern)
 
 1. Seed / Raw Layer (`seeds/`)
 
@@ -79,22 +79,16 @@ Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `
 `fct_payments`: Transaction-grain fact table built on completed transactions. Calculates payment processing fees, FX markup, net CAD volume, and associated refund metrics.
 `merchant_performance` : Monthly aggregate reporting table summarizing volume, revenues, fee earnings, authorization rates, and refund counts per merchant.
 
----
 
-## 📊 Core Business Metrics (`docs/metrics.sql`)
+
+📊 Core Business Metrics (`docs/metrics.sql`)
 
 All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
-| Metric | Business Definition | Calculation Logic |
-| :--- | :--- | :--- |
-| **Gross Merchandise Volume (GMV)** | Total completed payment volume in CAD | `SUM(amount_cad) WHERE status = 'completed'` |
-| **Net Revenue** | Total GMV minus processed refund amounts | `GMV - SUM(total_refunded_cad)` |
-| **Refund Rate** | Percentage of completed transactions that were refunded | `COUNT(refunds) / COUNT(completed_transactions)` |
-| **Average Transaction Value (ATV)** | Average order value per completed transaction | `GMV / COUNT(completed_transactions)` |
-| **Authorization Rate** | System approval rate across all payment attempts | `COUNT(completed) / (COUNT(completed) + COUNT(failed))` |
-| **Take Rate** | Platform fee capture efficiency relative to GMV | `SUM(total_fees_cad) / GMV` |
+<img width="1592" height="227" alt="image" src="https://github.com/user-attachments/assets/9925c4fb-ad6f-43c9-862a-54e6b53d781f" />
 
----
+
+
 
 ## 🧪 Data Quality & Custom Test Suite (`tests/`)
 
