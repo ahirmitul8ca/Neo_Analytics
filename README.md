@@ -21,21 +21,21 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay 
 Before running dbt commands, set up your Google Cloud Platform (GCP) environment and authenticate locally:
 
 1. **Create GCP Project & Dataset**
-   * Log in to the [Google Cloud Console](https://console.cloud.google.com/)[cite: 1].
-   * Create a new GCP project (e.g., `neo-analytics-508618`)[cite: 1].
-   * Navigate to **BigQuery** and click **Create Dataset**[cite: 1]. Set the **Dataset ID** to `neoanalyticsdb` and **Data location** to `US`[cite: 1].
+   * Log in to the [Google Cloud Console](https://console.cloud.google.com/).
+   * Create a new GCP project (e.g., `neo-analytics-508618`).
+   * Navigate to **BigQuery** and click **Create Dataset**. Set the **Dataset ID** to `neoanalyticsdb` and **Data location** to `US`.
 
 2. **Install Google Cloud SDK & Authenticate**
-   * Download and install the [Google Cloud SDK](https://cloud.google.com/sdk)[cite: 1].
-   * Open your terminal inside your active Python virtual environment and run[cite: 1]:
+   * Download and install the [Google Cloud SDK](https://cloud.google.com/sdk).
+   * Open your terminal inside your active Python virtual environment and run:
      ```bash
      gcloud auth application-default login
      ```
-   * Complete the OAuth browser prompt to authenticate your local machine[cite: 1].
+   * Complete the OAuth browser prompt to authenticate your local machine.
 
 3. **Configure Local Profile (`~/.dbt/profiles.yml`)**
-   * Create or open your local dbt profile at `~/.dbt/profiles.yml` (or `%USERPROFILE%\.dbt\profiles.yml` on Windows)[cite: 1].
-   * Add the `neo_analytics` connection configuration[cite: 1]:
+   * Create or open your local dbt profile at `~/.dbt/profiles.yml` (or `%USERPROFILE%\.dbt\profiles.yml` on Windows).
+   * Add the `neo_analytics` connection configuration:
 
    ```yaml
    neo_analytics:
@@ -166,10 +166,10 @@ An `on-run-end` hook macro that captures execution metadata across generic schem
 * **Functionality:**
   * Filters execution results specifically for node resource types matching `test`.
   * Dynamically targets the destination database (`{{ target.project }}`) and dataset (`{{ target.schema }}_dbt_test_audit`) based on the active target profile.
-  * Automatically constructs the target table `audit_test_history` if it does not already exist[cite: 1].
-  * Inserts execution records capturing `test_name`, `model_tested`, `status` (pass/fail/warn), `execution_time_seconds`, `failures_detected`, `test_type`, and `executed_at` timestamps[cite: 1].
+  * Automatically constructs the target table `audit_test_history` if it does not already exist.
+  * Inserts execution records capturing `test_name`, `model_tested`, `status` (pass/fail/warn), `execution_time_seconds`, `failures_detected`, `test_type`, and `executed_at` timestamps.
 * **Project Configuration (`dbt_project.yml`):**
-  Triggered automatically upon test suite execution[cite: 1]:
+  Triggered automatically upon test suite execution:
   ```yaml
   on-run-end:
     - "{{ log_test_results(results) }}"
