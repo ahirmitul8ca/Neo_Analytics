@@ -87,33 +87,18 @@ Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `
 ---
 
 
-# 📊 Core Business Metrics (`docs/metrics.sql`)
+## 📊 Core Business Metrics (`docs/metrics.sql`)
 
 All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
-  Gross Merchandise Volume (GMV)
-   Business Definition: Total completed payment volume in CAD
-   Calculation Logic: `SUM(amount_cad) WHERE status = 'completed'`
-
- Net Revenue
-   Business Definition: Total GMV minus processed refund amounts
-   Calculation Logic: `GMV - SUM(total_refunded_cad)`
-
- Refund Rate
-   Business Definition: Percentage of completed transactions that were refunded
-   Calculation Logic: `COUNT(refunds) / COUNT(completed_transactions)`
-
- Average Transaction Value (ATV)
-   Business Definition: Average order value per completed transaction
-   Calculation Logic: `GMV / COUNT(completed_transactions)`
-
- Authorization Rate
-   Business Definition: System approval rate across all payment attempts
-   Calculation Logic: `COUNT(completed) / (COUNT(completed) + COUNT(failed))`
-
- Take Rate
-   Business Definition: Platform fee capture efficiency relative to GMV
-   Calculation Logic: `SUM(total_fees_cad) / GMV`
+| Metric | Business Definition | Calculation Logic |
+| :--- | :--- | :--- |
+| **Gross Merchandise Volume (GMV)** | Total completed payment volume in CAD | `SUM(amount_cad) WHERE status = 'completed'` |
+| **Net Revenue** | Total GMV minus processed refund amounts | `GMV - SUM(total_refunded_cad)` |
+| **Refund Rate** | Percentage of completed transactions that were refunded | `COUNT(refunds) / COUNT(completed_transactions)` |
+| **Average Transaction Value (ATV)** | Average order value per completed transaction | `GMV / COUNT(completed_transactions)` |
+| **Authorization Rate** | System approval rate across all payment attempts | `COUNT(completed) / (COUNT(completed) + COUNT(failed))` |
+| **Take Rate** | Platform fee capture efficiency relative to GMV | `SUM(total_fees_cad) / GMV` |
 
 ---
 
