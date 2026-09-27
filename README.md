@@ -16,6 +16,42 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay 
 
 ---
 
+### ☁️ Google BigQuery GCP Setup
+
+Before running dbt commands, set up your Google Cloud Platform (GCP) environment and authenticate locally:
+
+1. **Create GCP Project & Dataset**
+   * Log in to the [Google Cloud Console](https://console.cloud.google.com/)[cite: 1].
+   * Create a new GCP project (e.g., `neo-analytics-508618`)[cite: 1].
+   * Navigate to **BigQuery** and click **Create Dataset**[cite: 1]. Set the **Dataset ID** to `northpay_dev` and **Data location** to `US`[cite: 1].
+
+2. **Install Google Cloud SDK & Authenticate**
+   * Download and install the [Google Cloud SDK](https://cloud.google.com/sdk)[cite: 1].
+   * Open your terminal inside your active Python virtual environment and run[cite: 1]:
+     ```bash
+     gcloud auth application-default login
+     ```
+   * Complete the OAuth browser prompt to authenticate your local machine[cite: 1].
+
+3. **Configure Local Profile (`~/.dbt/profiles.yml`)**
+   * Create or open your local dbt profile at `~/.dbt/profiles.yml` (or `%USERPROFILE%\.dbt\profiles.yml` on Windows)[cite: 1].
+   * Add the `neo_analytics` connection configuration[cite: 1]:
+
+   ```yaml
+   neo_analytics:
+     target: dev
+     outputs:
+       dev:
+         type: bigquery
+         method: oauth               # Authenticates using gcloud ADC
+         project: neo-analytics-508618  # Your GCP Project ID
+         dataset: northpay_dev       # Target BigQuery Dataset ID
+         threads: 4
+         location: US                # BigQuery location region
+
+
+
+
 ## 📂 Project Structure
 
 ```text
