@@ -189,5 +189,5 @@ An operational macro that automates schema-level permissions and access control 
     ```
   * **Passing dynamic arguments (override target dataset or role):**
     ```bash
-    dbt run-operation grant_select --args "{schema: 'northpay_dev', role: 'roles/bigquery.dataViewer'}"
+    dbt run-operation grant_select --args "{schema: 'neoanalyticsdb ', role: 'roles/bigquery.dataViewer'}"
     ```
