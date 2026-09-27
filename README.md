@@ -152,3 +152,24 @@ The pipeline executes automated generic schema tests (defined in `models/schema.
 6. `monthly_fee_cap.sql`: Validates monthly tier caps on fee structures.
 
 ---
+
+## 🧩 Custom dbt Macros (`macros/`)
+
+This repository contains custom Jinja/SQL macros in the `macros/` directory to handle database permissions, access governance, and dynamic audit logging in Google Cloud BigQuery.
+
+---
+
+### 1. `log_test_results.sql` (Automated Test Audit Logging)
+
+An `on-run-end` hook macro that captures execution metadata across generic schema assertions and singular custom SQL tests, automatically logging audit records directly into a dedicated BigQuery dataset.
+
+* **Functionality:**
+  * Filters execution results specifically for node resource types matching `test`.
+  * Dynamically targets the destination database (`{{ target.project }}`) and dataset (`{{ target.schema }}_dbt_test_audit`) based on the active target profile.
+  * Automatically constructs the target table `audit_test_history` if it does not already exist[cite: 1].
+  * Inserts execution records capturing `test_name`, `model_tested`, `status` (pass/fail/warn), `execution_time_seconds`, `failures_detected`, `test_type`, and `executed_at` timestamps[cite: 1].
+* **Project Configuration (`dbt_project.yml`):**
+  Triggered automatically upon test suite execution[cite: 1]:
+  ```yaml
+  on-run-end:
+    - "{{ log_test_results(results) }}"
