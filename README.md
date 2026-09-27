@@ -1,16 +1,16 @@
 # 💳 Neo Analytics: FinTech Analytics Engineering Pipeline
 
-A portfolio-grade, end-to-end analytics engineering pipeline built for **NorthPay** (a fictional Canadian FinTech payment processor). This repository transforms raw payment, refund, merchant, and fee plan data into production-ready dimensional models, core business metrics, and automated data quality test suites deployed using **dbt Core**.
+A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay (a fictional Canadian FinTech payment processor). This repository transforms raw payment, refund, merchant, and fee plan data into production-ready dimensional models, core business metrics, and automated data quality test suites deployed using dbt Core.
 
 ---
 
 ## 🛠 Tech Stack
 
-* **Data Warehouse:** Google Cloud BigQuery
-* **Transformation & Modeling:** dbt Core (`dbt-bigquery`)
-* **SQL Dialect:** Standard SQL / T-SQL
-* **Data Ingestion:** dbt Seeds (Native CSV Loaders)
-* **Version Control:** Git & GitHub
+ Data Warehouse: Google Cloud BigQuery
+ Transformation & Modeling: dbt Core (`dbt-bigquery`)
+ SQL Dialect: Standard SQL / T-SQL
+ Data Ingestion: dbt Seeds (Native CSV Loaders)
+ Version Control: Git & GitHub
 
 ---
 
@@ -85,52 +85,29 @@ Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `
 
 All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
-## 📊 Core Business Metrics (`docs/metrics.sql`)
+  Gross Merchandise Volume (GMV)
+   Business Definition: Total completed payment volume in CAD
+   Calculation Logic: `SUM(amount_cad) WHERE status = 'completed'`
 
-All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
+ Net Revenue
+   Business Definition: Total GMV minus processed refund amounts
+   Calculation Logic: `GMV - SUM(total_refunded_cad)`
 
-<table>
-  <thead>
-    <tr>
-      <th>Metric</th>
-      <th>Business Definition</th>
-      <th>Calculation Logic</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>Gross Merchandise Volume (GMV)</b></td>
-      <td>Total completed payment volume in CAD</td>
-      <td><code>SUM(amount_cad) WHERE status = 'completed'</code></td>
-    </tr>
-    <tr>
-      <td><b>Net Revenue</b></td>
-      <td>Total GMV minus processed refund amounts</td>
-      <td><code>GMV - SUM(total_refunded_cad)</code></td>
-    </tr>
-    <tr>
-      <td><b>Refund Rate</b></td>
-      <td>Percentage of completed transactions that were refunded</td>
-      <td><code>COUNT(refunds) / COUNT(completed_transactions)</code></td>
-    </tr>
-    <tr>
-      <td><b>Average Transaction Value (ATV)</b></td>
-      <td>Average order value per completed transaction</td>
-      <td><code>GMV / COUNT(completed_transactions)</code></td>
-    </tr>
-    <tr>
-      <td><b>Authorization Rate</b></td>
-      <td>System approval rate across all payment attempts</td>
-      <td><code>COUNT(completed) / (COUNT(completed) + COUNT(failed))</code></td>
-    </tr>
-    <tr>
-      <td><b>Take Rate</b></td>
-      <td>Platform fee capture efficiency relative to GMV</td>
-      <td><code>SUM(total_fees_cad) / GMV</code></td>
-    </tr>
-  </tbody>
-</table>
+ Refund Rate
+   Business Definition: Percentage of completed transactions that were refunded
+   Calculation Logic: `COUNT(refunds) / COUNT(completed_transactions)`
 
+ Average Transaction Value (ATV)
+   Business Definition: Average order value per completed transaction
+   Calculation Logic: `GMV / COUNT(completed_transactions)`
+
+ Authorization Rate
+   Business Definition: System approval rate across all payment attempts
+   Calculation Logic: `COUNT(completed) / (COUNT(completed) + COUNT(failed))`
+
+ Take Rate
+   Business Definition: Platform fee capture efficiency relative to GMV
+   Calculation Logic: `SUM(total_fees_cad) / GMV`
 
 
 
@@ -138,9 +115,9 @@ All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
 The pipeline executes automated generic schema tests (defined in `models/schema.yml`) and 6 custom singular SQL business logic assertions:
 
-1. **`assert_fx_fee.sql`**: Validates foreign exchange fee calculations on non-CAD transactions.
-2. **`assert_no_refunds_on_failed_transactions.sql`**: Confirms no refund records are associated with failed transaction attempts.
-3. **`assert_refund_date_after_transaction_date.sql`**: Ensures refund timestamps occur after original transaction creation dates.
-4. **`authorization_rate_bounds.sql`**: Verifies authorization rates stay within 0% to 100% boundaries.
-5. **`cumulative_payment_refund_bounds.sql`**: Asserts cumulative refund amounts do not exceed initial transaction values.
-6. **`monthly_fee_cap.sql`**: Validates monthly tier caps on fee structures.
+1. `assert_fx_fee.sql`: Validates foreign exchange fee calculations on non-CAD transactions.
+2. `assert_no_refunds_on_failed_transactions.sql`: Confirms no refund records are associated with failed transaction attempts.
+3. `assert_refund_date_after_transaction_date.sql`: Ensures refund timestamps occur after original transaction creation dates.
+4. `authorization_rate_bounds.sql`: Verifies authorization rates stay within 0% to 100% boundaries.
+5. `cumulative_payment_refund_bounds.sql`: Asserts cumulative refund amounts do not exceed initial transaction values.
+6. `monthly_fee_cap.sql`: Validates monthly tier caps on fee structures.
