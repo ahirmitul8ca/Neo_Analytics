@@ -23,7 +23,7 @@ Before running dbt commands, set up your Google Cloud Platform (GCP) environment
 1. **Create GCP Project & Dataset**
    * Log in to the [Google Cloud Console](https://console.cloud.google.com/)[cite: 1].
    * Create a new GCP project (e.g., `neo-analytics-508618`)[cite: 1].
-   * Navigate to **BigQuery** and click **Create Dataset**[cite: 1]. Set the **Dataset ID** to `northpay_dev` and **Data location** to `US`[cite: 1].
+   * Navigate to **BigQuery** and click **Create Dataset**[cite: 1]. Set the **Dataset ID** to `neoanalyticsdb` and **Data location** to `US`[cite: 1].
 
 2. **Install Google Cloud SDK & Authenticate**
    * Download and install the [Google Cloud SDK](https://cloud.google.com/sdk)[cite: 1].
@@ -45,7 +45,7 @@ Before running dbt commands, set up your Google Cloud Platform (GCP) environment
          type: bigquery
          method: oauth               # Authenticates using gcloud ADC
          project: neo-analytics-508618  # Your GCP Project ID
-         dataset: northpay_dev       # Target BigQuery Dataset ID
+         dataset: neoanalyticsdb       # Target BigQuery Dataset ID
          threads: 4
          location: US                # BigQuery location region
 
