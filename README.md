@@ -85,7 +85,51 @@ Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `
 
 All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
-<img width="1592" height="227" alt="image" src="https://github.com/user-attachments/assets/9925c4fb-ad6f-43c9-862a-54e6b53d781f" />
+## 📊 Core Business Metrics (`docs/metrics.sql`)
+
+All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Business Definition</th>
+      <th>Calculation Logic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Gross Merchandise Volume (GMV)</b></td>
+      <td>Total completed payment volume in CAD</td>
+      <td><code>SUM(amount_cad) WHERE status = 'completed'</code></td>
+    </tr>
+    <tr>
+      <td><b>Net Revenue</b></td>
+      <td>Total GMV minus processed refund amounts</td>
+      <td><code>GMV - SUM(total_refunded_cad)</code></td>
+    </tr>
+    <tr>
+      <td><b>Refund Rate</b></td>
+      <td>Percentage of completed transactions that were refunded</td>
+      <td><code>COUNT(refunds) / COUNT(completed_transactions)</code></td>
+    </tr>
+    <tr>
+      <td><b>Average Transaction Value (ATV)</b></td>
+      <td>Average order value per completed transaction</td>
+      <td><code>GMV / COUNT(completed_transactions)</code></td>
+    </tr>
+    <tr>
+      <td><b>Authorization Rate</b></td>
+      <td>System approval rate across all payment attempts</td>
+      <td><code>COUNT(completed) / (COUNT(completed) + COUNT(failed))</code></td>
+    </tr>
+    <tr>
+      <td><b>Take Rate</b></td>
+      <td>Platform fee capture efficiency relative to GMV</td>
+      <td><code>SUM(total_fees_cad) / GMV</code></td>
+    </tr>
+  </tbody>
+</table>
 
 
 
