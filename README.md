@@ -43,7 +43,7 @@ Neo_Analytics/
 │   ├── merchants.csv             # 10 merchant records
 │   ├── refunds.csv               # ~3,500 refund transaction records
 │   └── transactions.csv          # 50,000 core payment attempts
-├── snapshots/                    # Type-2 slowly changing dimensions (SCD2)
+├── snapshots/                    
 ├── tests/                        # Singular SQL custom tests & assertion rules
 │   ├── .gitkeep
 │   ├── assert_fx_fee.sql
