@@ -9,7 +9,7 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay 
 | Component | Technology / Specification |
 | :--- | :--- |
 | **Data Warehouse** | Google Cloud BigQuery |
-| **Transformation & Modeling** | dbt Core (dbt-bigquery) |
+| **Transformation & Modeling** | dbt Core ('dbt-bigquery') |
 | **SQL Dialect** | Standard SQL / T-SQL |
 | **Data Ingestion** | dbt Seeds (Native CSV Loaders) |
 | **Version Control** | Git & GitHub |
@@ -54,7 +54,7 @@ Before running dbt commands, set up your Google Cloud Platform (GCP) environment
 
 ## 📂 Project Structure
 
-text
+```text
 Neo_Analytics/
 ├── analyses/                     
 ├── data/                         
@@ -97,7 +97,7 @@ Neo_Analytics/
 
 
 
-
+```
 
 
 # 📐 Data Architecture & Modeling (Medallion Pattern)
