@@ -6,11 +6,13 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay 
 
 ## 🛠 Tech Stack
 
- Data Warehouse: Google Cloud BigQuery
- Transformation & Modeling: dbt Core (`dbt-bigquery`)
- SQL Dialect: Standard SQL / T-SQL
- Data Ingestion: dbt Seeds (Native CSV Loaders)
- Version Control: Git & GitHub
+| Component | Technology / Specification |
+| :--- | :--- |
+| **Data Warehouse** | Google Cloud BigQuery |
+| **Transformation & Modeling** | dbt Core (`dbt-bigquery`) |
+| **SQL Dialect** | Standard SQL / T-SQL |
+| **Data Ingestion** | dbt Seeds (Native CSV Loaders) |
+| **Version Control** | Git & GitHub |
 
 ---
 
