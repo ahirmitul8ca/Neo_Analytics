@@ -173,3 +173,12 @@ An `on-run-end` hook macro that captures execution metadata across generic schem
   ```yaml
   on-run-end:
     - "{{ log_test_results(results) }}"
+
+### 2. grant_select.sql (Database Access Control & Governance)
+
+An operational macro that automates schema-level permissions and access control for downstream users and teams[cite: 1, 2].
+How It Works:
+
+    Default Values: Uses the active target schema (target.schema) and defaults to BigQuery's roles/bigquery.dataViewer role[cite: 1, 2].
+
+    Automated DDL: Constructs and executes dynamic SQL GRANT statements to give read-only viewer privileges to analytics-team@example.com without requiring manual GCP console updates[cite: 1, 2].
