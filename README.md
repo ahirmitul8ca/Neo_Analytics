@@ -16,7 +16,7 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay 
 
 ## 📂 Project Structure
 
-```text
+
 Neo_Analytics/
 ├── analyses/                     
 ├── data/                         
@@ -59,6 +59,8 @@ Neo_Analytics/
 
 ---
 
+##
+
 📐 Data Architecture & Modeling (Medallion Pattern)
 
 1. Seed / Raw Layer (`seeds/`)
@@ -81,7 +83,7 @@ Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `
 `merchant_performance` : Monthly aggregate reporting table summarizing volume, revenues, fee earnings, authorization rates, and refund counts per merchant.
 
 
-##
+---
 
 
 📊 Core Business Metrics (`docs/metrics.sql`)
