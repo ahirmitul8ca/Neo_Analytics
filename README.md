@@ -16,7 +16,7 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay 
 
 ## 📂 Project Structure
 
-
+```text
 Neo_Analytics/
 ├── analyses/                     
 ├── data/                         
@@ -58,10 +58,11 @@ Neo_Analytics/
 └── requirements.txt              # Python dependencies (dbt-core, adapters)
 
 ---
+```
 
-##
 
-📐 Data Architecture & Modeling (Medallion Pattern)
+
+# 📐 Data Architecture & Modeling (Medallion Pattern)
 
 1. Seed / Raw Layer (`seeds/`)
 
