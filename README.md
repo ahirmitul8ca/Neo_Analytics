@@ -1,21 +1,22 @@
-💳 Neo Analytics: FinTech Analytics Engineering Pipeline
+# 💳 Neo Analytics: FinTech Analytics Engineering Pipeline
 
-A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay (a fictional Canadian FinTech payment processor). This repository transforms raw payment, refund, merchant, and fee plan data into production-ready dimensional models, core business metrics, and automated data quality test suites deployed using dbt Core.
+A portfolio-grade, end-to-end analytics engineering pipeline built for **NorthPay** (a fictional Canadian FinTech payment processor). This repository transforms raw payment, refund, merchant, and fee plan data into production-ready dimensional models, core business metrics, and automated data quality test suites deployed using **dbt Core**.
 
-🛠 Tech Stack
+---
 
-Data Warehouse: Google Cloud BigQuery
-Transformation & Modeling: dbt Core (dbt-bigquery)   
-SQL Dialect: Standard SQL / T-SQL   
-Data Ingestion: dbt Seeds (Native CSV Loaders)   
-Version Control: Git & GitHub   
+## 🛠 Tech Stack
 
+* **Data Warehouse:** Google Cloud BigQuery / Azure Synapse Analytics
+* **Transformation & Modeling:** dbt Core (`dbt-bigquery` / `dbt-synapse`)
+* **SQL Dialect:** Standard SQL / T-SQL
+* **Data Ingestion:** dbt Seeds (Native CSV Loaders)
+* **Version Control:** Git & GitHub
 
+---
 
+## 📂 Project Structure
 
-
-📂 Project Structure
-
+```text
 Neo_Analytics/
 ├── analyses/                     # Ad-hoc analytical queries and exploratory SQL
 ├── data/                         # Raw seed CSV backups
