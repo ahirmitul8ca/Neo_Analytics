@@ -111,7 +111,7 @@ All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
 
 
-## 🧪 Data Quality & Custom Test Suite (`tests/`)
+🧪 Data Quality & Custom Test Suite (`tests/`)
 
 The pipeline executes automated generic schema tests (defined in `models/schema.yml`) and 6 custom singular SQL business logic assertions:
 
