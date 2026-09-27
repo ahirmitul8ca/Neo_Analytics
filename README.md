@@ -57,7 +57,7 @@ Neo_Analytics/
 ├── README.md                     # Repository documentation & project brief
 └── requirements.txt              # Python dependencies (dbt-core, adapters)
 
----
+
 ```
 
 
@@ -87,7 +87,7 @@ Field Standardization: Harmonizes field naming conventions (`fixed_fee_cad` -> `
 ---
 
 
-📊 Core Business Metrics (`docs/metrics.sql`)
+# 📊 Core Business Metrics (`docs/metrics.sql`)
 
 All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
@@ -117,7 +117,7 @@ All 6 core business metrics are defined and queryable in `docs/metrics.sql`:
 
 ---
 
-🧪 Data Quality & Custom Test Suite (`tests/`)
+# 🧪 Data Quality & Custom Test Suite (`tests/`)
 
 The pipeline executes automated generic schema tests (defined in `models/schema.yml`) and 6 custom singular SQL business logic assertions:
 
@@ -127,3 +127,5 @@ The pipeline executes automated generic schema tests (defined in `models/schema.
 4. `authorization_rate_bounds.sql`: Verifies authorization rates stay within 0% to 100% boundaries.
 5. `cumulative_payment_refund_bounds.sql`: Asserts cumulative refund amounts do not exceed initial transaction values.
 6. `monthly_fee_cap.sql`: Validates monthly tier caps on fee structures.
+
+---
