@@ -174,24 +174,20 @@ An `on-run-end` hook macro that captures execution metadata across generic schem
   on-run-end:
     - "{{ log_test_results(results) }}"
 
-2 . grant_select.sql (Database Access Control & Governance)
+### 2. `grant_select.sql` (Database Access Control & Governance)
 
 An operational macro that automates schema-level permissions and access control for downstream users and teams.
 
-    How It Works:
+* **How It Works:**
+  * **Default Values:** Uses the active target schema (`target.schema`) and defaults to BigQuery's `roles/bigquery.dataViewer` role.
+  * **Automated DDL:** Constructs and executes dynamic SQL `GRANT` statements to give read-only viewer privileges to `analytics-team@example.com` without requiring manual GCP console updates.
 
-        Default Values: Uses the active target schema (target.schema) and defaults to BigQuery's roles/bigquery.dataViewer role.
-
-        Automated DDL: Constructs and executes dynamic SQL GRANT statements to give read-only viewer privileges to analytics-team@example.com without requiring manual GCP console updates.
-
-    CLI Execution Commands:
-
-        Default execution (grants viewer access on current target schema):
-        Bash
-
-        dbt run-operation grant_select
-
-        Passing dynamic arguments (override target dataset or role):
-        Bash
-
-        dbt run-operation grant_select --args "{schema: 'northpay_dev', role: 'roles/bigquery.dataViewer'}"
+* **CLI Execution Commands:**
+  * **Default execution (grants viewer access on current target schema):**
+    ```bash
+    dbt run-operation grant_select
+    ```
+  * **Passing dynamic arguments (override target dataset or role):**
+    ```bash
+    dbt run-operation grant_select --args "{schema: 'northpay_dev', role: 'roles/bigquery.dataViewer'}"
+    ```
