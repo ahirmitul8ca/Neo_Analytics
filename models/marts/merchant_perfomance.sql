@@ -3,7 +3,7 @@ with merchants as (
     from {{ ref('stg_merchants') }}
 ),
 
-
+-- 1. Pre-aggregate transactions per merchant per month
 monthly_transactions as (
     select
         merchant_id,
@@ -16,6 +16,7 @@ monthly_transactions as (
     group by 1, 2
 ),
 
+-- 2. Pre-aggregate payments per merchant per month
 monthly_payments as (
     select
         merchant_id,
@@ -26,7 +27,7 @@ monthly_payments as (
     group by 1, 2
 )
 
-
+-- 3. Join pre-aggregated CTEs cleanly without fan-out
 select
     m.merchant_id,
     m.merchant_name,
