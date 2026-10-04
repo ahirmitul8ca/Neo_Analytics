@@ -85,7 +85,7 @@ Before running dbt commands, set up your Google Cloud Platform (GCP) environment
       dev:
         type: bigquery
         method: oauth                    # Authenticates using gcloud ADC
-        project: <your-gcp-project-id>   # Your GCP Project ID
+        project: neo-analytics-508618   # Your GCP Project ID
         dataset: neoanalyticsdb          # Target BigQuery Dataset ID
         threads: 4
         location: US                     # BigQuery location region
