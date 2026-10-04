@@ -6,7 +6,7 @@ A portfolio-grade, end-to-end analytics engineering pipeline built for NorthPay 
 
 ## 📊 Executive Power BI Dashboard
 
-![Dashboard Overview](docs/dashboard.png)
+![Dashboard Overview](docs/Dashboard.png)
 
 ![Merchant Performance Analytics](docs/Merchant_Perfomace.png)
 
