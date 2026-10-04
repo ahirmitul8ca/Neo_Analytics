@@ -29,5 +29,3 @@ data_tests:
   +store_failures: true
   +schema: dbt_test_audit
   
-on-run-end:
-  - "{{ log_test_results(results) }}"
