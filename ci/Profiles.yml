@@ -5,6 +5,6 @@ neo_analytics:
       type: bigquery
       method: oauth
       project: neo-analytics-508618
-      dataset: neoanalyticsdb_ci
+      dataset: neoanalyticsdb
       threads: 4
       location: US
