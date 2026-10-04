@@ -9,6 +9,6 @@ select
 
 from {{ ref ('stg_transactions') }} as t
 join {{ ref ('stg_refunds' ) }} r
-on t.transaction = r.transaction_id
+on t.transaction_id = r.transaction_id
 group by 1,2
 having sum(r.refund_amount_cad) > t.amount_cad

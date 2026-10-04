@@ -109,7 +109,6 @@ Neo_Analytics/
 │   └── metrics.sql                # SQL definitions for core business metrics
 ├── macros/
 │   ├── grant_select.sql           # Read-only access grants
-│   └── log_tests_results.sql      # on-run-end test audit logging
 ├── models/
 │   ├── marts/
 │   │   ├── fct_payments.sql
@@ -199,25 +198,9 @@ The pipeline runs generic schema tests (defined in `models/schema.yml`) and 6 cu
 
 Custom Jinja/SQL macros handle database permissions, access governance, and audit logging in Google BigQuery.
 
-### 1. `log_tests_results.sql` (macro `log_test_results`): Automated Test Audit Logging
 
-An `on-run-end` hook macro that captures execution metadata across generic schema tests and singular custom SQL tests, and logs audit records into a dedicated BigQuery dataset.
 
-**Functionality:**
-
-- Filters execution results to node resource types matching `test`.
-- Dynamically targets the destination project (`{{ target.project }}`) and dataset (`{{ target.schema }}_dbt_test_audit`) based on the active target profile.
-- Creates the table `audit_test_history` if it does not already exist.
-- Inserts records capturing `test_name`, `model_tested`, `status` (pass/fail/warn), `execution_time_seconds`, `failures_detected`, `test_type`, and `executed_at`.
-
-**Project configuration (`dbt_project.yml`)**, triggered automatically after each run:
-
-```yaml
-on-run-end:
-  - "{{ log_test_results(results) }}"
-```
-
-### 2. `grant_select.sql`: Access Control & Governance
+### 1. `grant_select.sql`: Access Control & Governance
 
 An operational macro that automates dataset-level read permissions for downstream users and teams.
 
