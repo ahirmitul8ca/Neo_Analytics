@@ -10,9 +10,6 @@ An end-to-end analytics engineering portfolio project for **NorthPay**, a fictio
 
 ![Dashboard Overview](docs/Dashboard.png)
 
-<<<<<<< HEAD
-![Merchant Performance Analytics](docs/Merchant_Perfomace.png)
-=======
 ![Merchant Performance Analytics](docs/Merchant_Performance.png)
 
 📄 [Full dashboard (PDF)](docs/Neo_Analytics_Dashboard.pdf)
@@ -24,7 +21,6 @@ An end-to-end analytics engineering portfolio project for **NorthPay**, a fictio
 ![dbt Lineage Graph](docs/lineage.png)
 
 -->
->>>>>>> 1c5f262 (fix: rename dashboard image file and update README link)
 
 ## 🛠 Tech Stack
 
