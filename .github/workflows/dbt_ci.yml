@@ -25,13 +25,7 @@ jobs:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      - name: Check secret is set
-        env:
-          KEY: ${{ secrets.GCP_SA_KEY }}
-        run: |
-          if [ -z "$KEY" ]; then echo "GCP_SA_KEY is EMPTY"; exit 1; else echo "GCP_SA_KEY is set"; fi
+          credentials_json: ${{ secrets.GITMIT }}
 
       - name: dbt build (seeds, models, tests)
         run: dbt build --target ci
