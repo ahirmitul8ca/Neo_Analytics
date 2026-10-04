@@ -1,0 +1,10 @@
+neo_analytics:
+  target: ci
+  outputs:
+    ci:
+      type: bigquery
+      method: oauth
+      project: neo-analytics-508618
+      dataset: neoanalyticsdb_ci
+      threads: 4
+      location: US
